@@ -46,13 +46,6 @@ public class Ex04_실수형 {
 		System.out.printf("c=%8.2f입니다.\n",c); //소수세번째자리에서 올림
 		System.out.printf("d=%s입니다.\n",d);
 		
-		
-		
-		
-		
-		
-		
-		
 	
 	}
 }
