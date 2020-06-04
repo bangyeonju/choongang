@@ -28,7 +28,7 @@ public class Ex04_실수형 {
 		int a = 100;
 		char b = 'A';
 		float c = 123.456f;
-		String d = "아이유";
+		String d = "아이유"; 
 		/*
 		 * 정수 : %d
 		 * char: %c
@@ -44,7 +44,7 @@ public class Ex04_실수형 {
 		System.out.printf("c=%f입니다.\n",c);
 		System.out.printf("c=%.2f입니다.\n",c); //소수세번째자리에서 올림
 		System.out.printf("c=%8.2f입니다.\n",c); //소수세번째자리에서 올림
-		System.out.printf("d=%s입니다.\n",d);
+		System.out.printf("d=%s입니다.\n",d); 
 		
 	
 	}
