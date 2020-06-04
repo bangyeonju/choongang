@@ -19,7 +19,7 @@ public class Ex03_01_ifelse {
 		else if (a < b) {
 			System.out.println("b가 a보다 크다");
 			System.out.println("호호호");
-		}
+		} 
 		else /*if (a == b) */ {
 			System.out.println("a와 b랑 같다");
 			System.out.println("헤헤헤");
