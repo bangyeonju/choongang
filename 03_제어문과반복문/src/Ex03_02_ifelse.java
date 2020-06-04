@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class Ex03_02_ifelse {
 
 	public static void main(String[] args) {
@@ -70,29 +71,38 @@ public class Ex03_02_ifelse {
 
 		System.out.println("hakjum:" + hakjum);
 		System.out.println();
+		
+		switch ((int) avg / 10) {
+		case 10:
+		case 9:
+//			System.out.println("A학점입니다.");
+			hakjum = "A학점";
+			break;
+		case 8:
+//			System.out.println("B학점입니다.");
+			hakjum = "B학점";
+			break;
+		case 7:
+//			System.out.println("B학점입니다.");
+			hakjum = "C학점";
+			break;	
+		case 6:
+//			System.out.println("C학점입니다.");
+			hakjum = "D학점";
+			break;
+		default :
+//			System.out.println("F학점입니다.");
+			hakjum = "F학점";
+			break;
+		}
+		System.out.println("학점" + hakjum);
+		
+		
 		if (kor % 5 == 0) {
 			System.out.println("5의 배수");
 		}
 		if (kor % 10 == 0) {
 			System.out.println("10의 배수");
-		}
-		switch ((int) avg / 10) {
-		case 10:
-		case 9:
-			System.out.println("A학점입니다.");
-			break;
-		case 8:
-			System.out.println("B학점입니다.");
-			break;
-		case 7:
-			System.out.println("B학점입니다.");
-			break;	
-		case 6:
-			System.out.println("C학점입니다.");
-			break;
-		default :
-			System.out.println("F학점입니다.");
-			break;
 		}
 
 	}
