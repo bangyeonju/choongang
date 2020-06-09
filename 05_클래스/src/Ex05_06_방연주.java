@@ -30,15 +30,16 @@ class Pay {
 	}
 
 	// 멤버변수 4개 출력하는 메서드() {
-	String infor(String name){
-		name = name;
-		bonbong=bonbong;
-		setTex(bonbong);
-		silsuSet(bonbong, tex);
-		return name;
-		
-		
+	void info(){
+		System.out.printf("이름=%s\n", name);
+		System.out.printf("월급=%d\n",bonbong);
+		System.out.printf("세금=%d\n",tex);
+		System.out.printf("실수액=%d\n",silsu);
+		System.out.println();
 	}
+
+
+	
 	
 	
 }
@@ -52,27 +53,22 @@ public class Ex05_06_방연주 {
 		p1.name = "윤아";
 		p1.bonbong = 4000000;
 		
-//		p2.name = "민아";
-//		p2.bonbong = 2000000;
-//		
-//		p3.name = "진아";
-//		p3.bonbong = 1000000;
+		p2.name = "민아";
+		p2.bonbong = 2000000;
+		
+		p3.name = "진아";
+		p3.bonbong = 1000000;
 		int money = p1.setTex(p1.bonbong);
 		int silmoney = p1.silsuSet(p1.bonbong, p1.tex);
-		System.out.println(money);
-		System.out.println(silmoney);
 		
-//		int money2 = p2.setTex(p2.bonbong);
-//		int silmoney2 = p2.silsuSet(p2.bonbong, p2.tex);
-//		System.out.println(money2);
-//		System.out.println(silmoney2);
-//		
-//		int money3 = p3.setTex(p1.bonbong);s
-//		int silmoney3 = p3.silsuSet(p3.bonbong, p3.tex);
-//		System.out.println(money3);
-//		System.out.println(silmoney3);
-		String nameInfor = p1.infor("윤아");
-		System.out.println(nameInfor);
-
+		int money2 = p2.setTex(p2.bonbong);
+		int silmoney2 = p2.silsuSet(p2.bonbong, p2.tex);
+		
+		int money3 = p3.setTex(p1.bonbong);
+		int silmoney3 = p3.silsuSet(p3.bonbong, p3.tex);
+		
+		p1.info();
+		p2.info();
+		p3.info();
 	}
 }
