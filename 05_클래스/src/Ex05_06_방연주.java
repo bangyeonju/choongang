@@ -58,14 +58,15 @@ public class Ex05_06_방연주 {
 		
 		p3.name = "진아";
 		p3.bonbong = 1000000;
-		int money = p1.setTex(p1.bonbong);
-		int silmoney = p1.silsuSet(p1.bonbong, p1.tex);
 		
-		int money2 = p2.setTex(p2.bonbong);
-		int silmoney2 = p2.silsuSet(p2.bonbong, p2.tex);
+		p1.setTex(p1.bonbong);
+		p1.silsuSet(p1.bonbong, p1.tex);
 		
-		int money3 = p3.setTex(p1.bonbong);
-		int silmoney3 = p3.silsuSet(p3.bonbong, p3.tex);
+		p2.setTex(p2.bonbong);
+		p2.silsuSet(p2.bonbong, p2.tex);
+		
+		p3.setTex(p1.bonbong);
+		p3.silsuSet(p3.bonbong, p3.tex);
 		
 		p1.info();
 		p2.info();
