@@ -2,31 +2,12 @@ import java.util.Scanner;
 
 public class Ex04_07_방연주 {
 
-	/**
-	 * @param args
-	 */
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
 		int num, stuNum = 0, i, total = 0, max, min, j, temp;
 		float avg;
-=======
-		int num, stuNum, i, total = 0, max, min, j, temp;
-		float avg = 0;
->>>>>>> bab640a12c369bc55d4aa021d5179c0c308ee28c
 		int[] score = null;
-
-		System.out.println("-----------------------------------------");
-		System.out.println("1.학생수|2.점수입력|3.점수목록|4.분석|5.종료"); // 종료부터 코드 작성할것!
-		System.out.println("-----------------------------------------");
-		System.out.print("번호선택>>");
-		num = sc.nextInt();
-
-	
 		while (true) {
 
 			System.out.println("-----------------------------------------");
@@ -34,9 +15,6 @@ public class Ex04_07_방연주 {
 			System.out.println("-----------------------------------------");
 			System.out.print("번호선택>>");
 			num = sc.nextInt();
-
-			// switch case문으로 해볼것!
-
 			if (num == 1) {
 				System.out.print("학생수 입력 >>");
 				stuNum = sc.nextInt();
@@ -76,11 +54,7 @@ public class Ex04_07_방연주 {
 					total = score[i] + total;
 				}
 				System.out.printf("총점:%d\n", total);
-<<<<<<< HEAD
-				avg = (float) total / stuNum;
-=======
-				avg = (float)total/score.length;
->>>>>>> bab640a12c369bc55d4aa021d5179c0c308ee28c
+				avg = (float)total / stuNum;
 				System.out.printf("평균:%.2f\n", avg);
 				max = score[0];
 				min = score[0];
@@ -93,11 +67,11 @@ public class Ex04_07_방연주 {
 					}
 
 				}
-				System.out.printf("최대값:%d\n", max);
+				System.out.printf("최대값:%d", max);
 				System.out.printf("최소값:%d", min);
 				System.out.println();
-
-				// 정렬
+				
+				//정렬
 				for (i = 0; i < score.length - 1; i++) {
 					for (j = i + 1; j < score.length; j++) {
 						if (score[i] > score[j]) {
@@ -111,8 +85,6 @@ public class Ex04_07_방연주 {
 					System.out.print(score[i] + " ");
 				}
 				System.out.println();
-				System.out.println("최대:" + score[score.length - 1]);
-				System.out.println("최소:" + score[0]);
 
 			} else if (num == 5) {
 				System.out.println("5.종료");
