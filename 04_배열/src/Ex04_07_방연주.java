@@ -2,11 +2,22 @@ import java.util.Scanner;
 
 public class Ex04_07_规楷林 {
 
+	/**
+	 * @param args
+	 */
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
+<<<<<<< HEAD
 		int num, stuNum = 0, i, total = 0, max, min, j, temp;
 		float avg;
+=======
+		int num, stuNum, i, total = 0, max, min, j, temp;
+		float avg = 0;
+>>>>>>> bab640a12c369bc55d4aa021d5179c0c308ee28c
 		int[] score = null;
 
 		System.out.println("-----------------------------------------");
@@ -65,7 +76,11 @@ public class Ex04_07_规楷林 {
 					total = score[i] + total;
 				}
 				System.out.printf("醚痢:%d\n", total);
+<<<<<<< HEAD
 				avg = (float) total / stuNum;
+=======
+				avg = (float)total/score.length;
+>>>>>>> bab640a12c369bc55d4aa021d5179c0c308ee28c
 				System.out.printf("乞闭:%.2f\n", avg);
 				max = score[0];
 				min = score[0];
