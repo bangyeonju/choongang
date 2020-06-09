@@ -8,14 +8,6 @@ public class Ex04_07_방연주2 {
 		int num, stuNum = 0, i, total = 0, max, min, j, temp;
 		float avg;
 		int[] score = null;
-
-		System.out.println("-----------------------------------------");
-		System.out.println("1.학생수|2.점수입력|3.점수목록|4.분석|5.종료"); // 종료부터 코드 작성할것!
-		System.out.println("-----------------------------------------");
-		System.out.print("번호선택>>");
-		num = sc.nextInt();
-
-		
 		while (true) {
 
 			System.out.println("-----------------------------------------");
@@ -23,31 +15,14 @@ public class Ex04_07_방연주2 {
 			System.out.println("-----------------------------------------");
 			System.out.print("번호선택>>");
 			num = sc.nextInt();
-
 			switch (num) {
 			case 1:
 				System.out.print("학생수 입력 >>");
 				stuNum = sc.nextInt();
 
 				score = new int[stuNum];
-
-			
+				break;
 			case 2:
-			case 3:
-			case 4:
-			case 5:
-			default:
-			}
-		}
-			// switch case문으로 해볼것!
-/*
-			if (num == 1) {
-				System.out.print("학생수 입력 >>");
-				stuNum = sc.nextInt();
-
-				score = new int[stuNum];
-
-			} else if (num == 2) {
 				System.out.println("2.점수입력");
 				if (score == null) {
 					System.out.println("1번 학생수 부터 입력하세용~");
@@ -58,9 +33,10 @@ public class Ex04_07_방연주2 {
 					System.out.printf("%d번 학생점수", i + 1);
 
 					score[i] = sc.nextInt();
-
 				}
-			} else if (num == 3) {
+				break;
+			case 3:
+
 				System.out.println("3.점수목록");
 				if (score == null) {
 					System.out.println("1번 학생수부터 입력하세용~");
@@ -69,8 +45,8 @@ public class Ex04_07_방연주2 {
 				for (i = 0; i < score.length; i++) {
 					System.out.printf("%d번 학생점수: %d점\n", i + 1, score[i]);
 				}
-
-			} else if (num == 4) {
+				break;
+			case 4:
 				if (score == null) {
 					System.out.println("1번 학생수부터 입력하세용ㅇ");
 					continue;
@@ -93,7 +69,7 @@ public class Ex04_07_방연주2 {
 					}
 
 				}
-				System.out.printf("최대값:%d\n", max);
+				System.out.printf("최대값:%d", max);
 				System.out.printf("최소값:%d", min);
 				System.out.println();
 
@@ -111,19 +87,20 @@ public class Ex04_07_방연주2 {
 					System.out.print(score[i] + " ");
 				}
 				System.out.println();
-				System.out.println("최대:" + score[score.length - 1]);
-				System.out.println("최소:" + score[0]);
-
-			} else if (num == 5) {
-				System.out.println("5.종료");
 				break;
-			} else {
+			case 5:
+				System.out.println("5.종료");
+				System.out.println("프로그램을 종료합니다.");
+				return;
+				
+			default:
 				System.out.println("1~5사이의 번호만 입력 가능합니다.");
+
 			}
 
+			
+
 		}
-		System.out.println("프로그램을 종료합니다.");*/
 
 	}
-
 }
