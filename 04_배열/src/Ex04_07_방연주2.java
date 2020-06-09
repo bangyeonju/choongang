@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Ex04_07_방연주 {
+public class Ex04_07_방연주2 {
 
 	public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class Ex04_07_방연주 {
 		System.out.print("번호선택>>");
 		num = sc.nextInt();
 
-	
+		
 		while (true) {
 
 			System.out.println("-----------------------------------------");
@@ -24,8 +24,23 @@ public class Ex04_07_방연주 {
 			System.out.print("번호선택>>");
 			num = sc.nextInt();
 
-			// switch case문으로 해볼것!
+			switch (num) {
+			case 1:
+				System.out.print("학생수 입력 >>");
+				stuNum = sc.nextInt();
 
+				score = new int[stuNum];
+
+			
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			default:
+			}
+		}
+			// switch case문으로 해볼것!
+/*
 			if (num == 1) {
 				System.out.print("학생수 입력 >>");
 				stuNum = sc.nextInt();
@@ -107,7 +122,7 @@ public class Ex04_07_방연주 {
 			}
 
 		}
-		System.out.println("프로그램을 종료합니다.");
+		System.out.println("프로그램을 종료합니다.");*/
 
 	}
 
