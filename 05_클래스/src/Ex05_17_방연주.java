@@ -5,16 +5,17 @@ public class Ex05_17_방연주 {
 
 		Music m1 = new Music(); // 생성자 통한 초기화
 
-//		m1 : getter 통한 출력
+		//		m1 : getter 통한 출력
 		System.out.print("제목:"+m1.getTitle());
 		System.out.print("가수:"+m1.getSinger());
 		System.out.print("장르:"+m1.getGenre());
 		System.out.print("가격:"+m1.getPrice());
+		
 //		m2 : 메서트안에서 출력
 		System.out.println();
-
 		Music m2 = new Music("찐이야", "영탁", "트로트", 3000);
-		System.out.print(m2.show());
+		m2.display();
+		
 		//m3 : 메서드에서 멤버변수 4개 한번에 리턴받아 출력
 		System.out.println();
 		Music m3 = new Music(); // setter통한초기화
@@ -22,7 +23,7 @@ public class Ex05_17_방연주 {
 		m3.setSinger("블랙핑크");
 		m3.setGenre("댄스");
 		m3.setPrice(5000);
-		m3.display();
+		System.out.println(m3.show());
 	}
 
 }
