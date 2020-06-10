@@ -91,16 +91,17 @@ public class Ex04_07_방연주2 {
 			case 5:
 				System.out.println("5.종료");
 				System.out.println("프로그램을 종료합니다.");
-				return;
+				System.exit(0);
 				
 			default:
+			
 				System.out.println("1~5사이의 번호만 입력 가능합니다.");
 
-			}
+			}//switch
 
 			
 
-		}
+		}//while
 
 	}
 }
