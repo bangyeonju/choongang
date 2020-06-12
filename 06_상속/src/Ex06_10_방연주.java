@@ -13,6 +13,7 @@ abstract class Employee2 {
 	abstract double getMonthPay();
 
 	void display() {
+		System.out.println();
 		System.out.println(empno);
 		System.out.println(name);
 		System.out.println(pay);
@@ -105,12 +106,14 @@ public class Ex06_10_방연주 {
 //		System.out.println(f.getMonthPay());
 
 		// 배열로 만들어서 할것
-		Employee2[] em = { new FullTime("F001", "성유리", 500, 30), new Contract("C001", "이효리", 400, 3),
+		Employee2[] em = { 
+				new FullTime("F001", "성유리", 500, 30), 
+				new Contract("C001", "이효리", 400, 3),
 				new PartTime("P001", "이진", 300, 7) };
 
 		for (i = 0; i < em.length; i++) {
 //			System.out.println(em[i]);
-			System.out.println("================");
+			System.out.printf("======배열을 이용한출력%d=====",i+1);
 			action(em[i]);
 		}
 

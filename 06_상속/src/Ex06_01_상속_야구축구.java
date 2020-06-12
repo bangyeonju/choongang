@@ -1,5 +1,6 @@
 import java.awt.Desktop.Action;
 
+
 class Sports {
 	String name;
 	int inwon;
@@ -78,19 +79,39 @@ public class Ex06_01_상속_야구축구 {
 		f.display();
 
 		System.out.println("==================");
+		/*
+		 * Sports[] spo = { new Sports("스포츠", 1), (Sports) new Baseball("야구", 9, 0.332),
+		 * new Football("축구", 11, 6) };
+		 */
 
-		Sports[] spo = {
-				new Sports("스포츠", 1),
-				(Sports) new Baseball("야구", 9, 0.332),
-				new Football("축구", 11, 6) 
+		Sports[] spo = { 
+				new Baseball("야구", 9, 0.314), 
+				new Football("축구", 11, 20),
+				new Sports("스포츠", 1)
 				};
 
 		int i;
 		for (i = 0; i < spo.length; i++) {
-
-			spo[i].display();
+			System.out.printf("배열을 이용한다%d\n",i+1);
+			action(spo[i]);
 		}
 
+	}
+
+	static void action(Sports sp) {
+		if (sp instanceof Baseball) {
+			Baseball b = (Baseball)sp;
+			b.display();
+		} else if( sp instanceof Football) {
+			Football f = (Football)sp;
+			f.display();
+		} else if (sp instanceof Sports) {
+			Sports s =(Sports)sp;
+			s.display();
+		}
+			
+		
+		
 	}
 
 }
