@@ -1,3 +1,4 @@
+
 abstract class Employee2 {
 	String empno;
 	String name;
@@ -50,7 +51,7 @@ class Contract extends Employee2 {
 
 	double getMonthPay() {
 		pay = pay / (double) 12 * hireYear;
-			return pay;
+		return pay;
 
 	}
 
@@ -87,10 +88,12 @@ class PartTime extends Employee2 {
 public class Ex06_10_방연주 {
 
 	public static void main(String[] args) {
+		int i;
 		FullTime f = new FullTime("F001", "성유리", 500, 30);
 		Contract c = new Contract("C001", "이효리", 400, 3);
 		PartTime p = new PartTime("P001", "이진", 300, 7);
-		
+
+		System.out.println("===========================");
 		f.display();
 		c.display();
 		p.display();
@@ -102,11 +105,37 @@ public class Ex06_10_방연주 {
 //		System.out.println(f.getMonthPay());
 
 		// 배열로 만들어서 할것
+		Employee2[] em = { new FullTime("F001", "성유리", 500, 30), new Contract("C001", "이효리", 400, 3),
+				new PartTime("P001", "이진", 300, 7) };
+
+		for (i = 0; i < em.length; i++) {
+//			System.out.println(em[i]);
+			System.out.println("================");
+			action(em[i]);
+		}
+
 //		FullTime f = new FullFime("F001","성유리",500,30);
 //		Contract c = new Contract("C001","이효리",400,3);
 //		PartTime p = new PartTime("P001","이진",300,7);
 //		//4개의 변수를 출력하는 메서드
 //		System.out.println(getMethodPay());
+	}
+
+	static void action(Employee2 e2) {
+		if (e2 instanceof FullTime) {
+			FullTime f = (FullTime) e2;
+			f.display();
+			System.out.println(e2.getMonthPay());
+		} else if (e2 instanceof Contract) {
+			Contract c = (Contract) e2;
+			c.display();
+			System.out.println(e2.getMonthPay());
+		} else if (e2 instanceof PartTime) {
+			PartTime p = (PartTime) e2;
+			p.display();
+			System.out.println(e2.getMonthPay());
+		}
+
 	}
 
 }
