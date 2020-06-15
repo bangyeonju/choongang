@@ -13,6 +13,7 @@ public class Ex04_01_1차원 {
 		System.out.println(arr1[0]);
 		System.out.println(arr1[1]);
 		System.out.println(arr1[2]);
+//		System.out.println(arr1[3]); //new ArrayIndexOutOfBoundsException(); 객체가 자동으로 만들어진다
 		// System.out.println(arr1[3]);
 		System.out.println("방의개수(length):" + arr1.length);
 		System.out.println(arr1); // 방 3개의 첫방의 주소가 들어간다.

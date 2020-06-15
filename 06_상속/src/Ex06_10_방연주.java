@@ -1,8 +1,8 @@
 
 abstract class Employee2 {
-	String empno;
-	String name;
-	double pay;
+	private String empno;
+	private String name;
+	private int pay;
 
 	Employee2(String empno, String name, int pay) {
 		this.empno = empno;
@@ -19,10 +19,13 @@ abstract class Employee2 {
 		System.out.println(pay);
 
 	}
+	double getPay(){
+		return pay;
+	}
 }
 
 class FullTime extends Employee2 {
-	int bonus;
+	private int bonus;
 
 	FullTime(String empno, String name, int pay, int bonus) {
 		super(empno, name, pay);
@@ -30,8 +33,8 @@ class FullTime extends Employee2 {
 	}
 
 	double getMonthPay() {
-		pay = (pay / (double) 12) + (bonus / (double) 12);
-		return pay;
+		
+		return (getPay() / (double) 12) + (bonus / (double) 12);
 	}
 
 	void display() {
@@ -43,7 +46,7 @@ class FullTime extends Employee2 {
 }
 
 class Contract extends Employee2 {
-	int hireYear;
+	private int hireYear;
 
 	Contract(String empno, String name, int pay, int hireYear) {
 		super(empno, name, pay);
@@ -51,8 +54,7 @@ class Contract extends Employee2 {
 	}
 
 	double getMonthPay() {
-		pay = pay / (double) 12 * hireYear;
-		return pay;
+		return getPay() / (double) 12 * hireYear;
 
 	}
 
@@ -65,7 +67,7 @@ class Contract extends Employee2 {
 }
 
 class PartTime extends Employee2 {
-	int workDay;
+	private int workDay;
 
 	PartTime(String empno, String name, int pay, int workDay) {
 		super(empno, name, pay);
@@ -73,8 +75,7 @@ class PartTime extends Employee2 {
 	}
 
 	double getMonthPay() {
-		pay = pay * workDay;
-		return pay;
+		return getPay() * workDay;
 
 	}
 
@@ -96,11 +97,10 @@ public class Ex06_10_방연주 {
 
 		System.out.println("===========================");
 		f.display();
-		c.display();
-		p.display();
-		System.out.println("===========================");
 		System.out.println(f.getMonthPay());
+		c.display();
 		System.out.println(c.getMonthPay());
+		p.display();
 		System.out.println(p.getMonthPay());
 		// 4개의 변수를 출력하는 메서드
 //		System.out.println(f.getMonthPay());
@@ -114,7 +114,8 @@ public class Ex06_10_방연주 {
 		for (i = 0; i < em.length; i++) {
 //			System.out.println(em[i]);
 			System.out.printf("======배열을 이용한출력%d=====",i+1);
-			action(em[i]);
+			em[i].display();
+			System.out.println(em[i].getMonthPay());
 		}
 
 //		FullTime f = new FullFime("F001","성유리",500,30);
@@ -123,7 +124,7 @@ public class Ex06_10_방연주 {
 //		//4개의 변수를 출력하는 메서드
 //		System.out.println(getMethodPay());
 	}
-
+/*
 	static void action(Employee2 e2) {
 		if (e2 instanceof FullTime) {
 			FullTime f = (FullTime) e2;
@@ -140,6 +141,7 @@ public class Ex06_10_방연주 {
 		}
 
 	}
+	*/
 
 }
 //getMonthPay추상메서드로

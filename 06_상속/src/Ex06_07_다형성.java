@@ -43,6 +43,7 @@ public class Ex06_07_다형성 {
 		System.out.println(fe.door);
 		System.out.println(fe.color);
 		System.out.println(fe.wheel);
+		System.out.println("---");
 //					*변수와 메서드의 큰 차이*
 		c.drive(); //why Cardrive가 안나오는가?
 //					부모에 drive가 없으면 에러 
