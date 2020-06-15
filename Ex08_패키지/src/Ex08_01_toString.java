@@ -8,7 +8,7 @@ class Person{
 		 
 	 }
 	 
-	 public String toString() { //public 쓰는이유?
+	 public String toString() { //public 쓰는이유? object가 최상위 클래스이기 때문에
 		return name + "," + age;
 	}
 	 //오버라이딩~
@@ -26,7 +26,7 @@ class Person{
 public class Ex08_01_toString {
 
 	public static void main(String[] args) {
-		Object man = new Person("보검", 30);//업캐스팅 //부모가 자식을 관리할수있다. Object는 ??상위???
+		Object man = new Person("보검", 30);//업캐스팅 //부모가 자식을 관리할수있다. Object는 최상위 틀래스
 		Object woman = new Person("윤아",30);
 		System.out.println(man.toString()); //객체주소를 반환?
 		System.out.println(woman.toString());
