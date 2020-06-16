@@ -5,7 +5,7 @@ class Person {
 	String name; //멤버변수(field), instance변수
 	int age;//멤버변수(field)
 	double height;//멤버변수(field)
-	static String nation; //static 변수  --> 공통으로 사용하는 변수*
+	static String nation; //static 변수(클래스변수)  --> 공통으로 사용하는 변수*
 }// 
 public class Ex05_01_클래스 {
 	public static void main(String[] args) {

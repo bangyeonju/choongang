@@ -27,12 +27,13 @@ public class Ex08_01_toString {
 
 	public static void main(String[] args) {
 		Object man = new Person("보검", 30);//업캐스팅 //부모가 자식을 관리할수있다. Object는 최상위 틀래스
-		Object woman = new Person("윤아",30);
+		Object woman = new Person("윤아",20);
 		System.out.println(man.toString()); //객체주소를 반환?
 		System.out.println(woman.toString());
 //		System.out.println(woman); //참조변수(주소를 가지고있는변수) == 참조변수.toString() // toString은 참조변수만 써도 자동으로 호출된단. 
 //		System.out.println(man.equals(woman)); // equals ==> 주소를 비교하는 메서드
 		System.out.println(man.equals(woman));
+		System.out.println(man==woman);
 	}
 
 }
