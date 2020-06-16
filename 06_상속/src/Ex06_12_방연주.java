@@ -32,7 +32,7 @@ class Shape2 {
 }
 class Phone extends Shape2 implements Camera,Mp3,DMB{
 
-	Phone(int size, String color) {
+	    Phone(int size, String color) {
 		super(size, color);
 	}
 	public void takePhoto() {
