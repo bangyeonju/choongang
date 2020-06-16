@@ -6,7 +6,6 @@ class Bike {
 		String model;
 		int year;
 
-	}
 	  BikeInfo(String model, int year) {
 			this.year = year;
 			this.model = model;
@@ -14,6 +13,7 @@ class Bike {
 
 	void BikeInfoPrint() {
 		System.out.println(model);
+	}
 	}
 
 	Bike(String model, int year, String color) {
@@ -23,8 +23,8 @@ class Bike {
 	}
 
 	void BikePrint() {
-		info.
-	}
+		info. BikeInfoPrint();
+		System.out.println(info.model + "," + info.year + "," + color);	}
 
 	
 
