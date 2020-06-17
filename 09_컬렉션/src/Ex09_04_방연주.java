@@ -15,6 +15,7 @@ class Person {
 								// 접근제어자가필요하다
 		return id + "/" + pw;
 	}
+
 }
 
 public class Ex09_04_방연주 {
@@ -41,9 +42,11 @@ public class Ex09_04_방연주 {
 		}
 //		list.add(p1);
 //		list.add(p2);
-//		list.add(new Person("song","9999"));
-		System.out.println(list.toString());// 주소값이 나오기떄문에 ...
 		ArrayList<Person> list2 = new ArrayList<Person>();
+//		list.add(new Person("song","9999"));
+		System.out.println("--");
+		System.out.println(list2);
+		System.out.println(list.toString());// 주소값이 나오기떄문에 ...
 		do {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("id");
@@ -52,18 +55,19 @@ public class Ex09_04_방연주 {
 		String inputPw = sc.next();
 		System.out.println("계속?");
 		String answer = sc.next();
+		list2.add(new Person(inputId, inputPw));
+
 		if(answer.equalsIgnoreCase("n")) {
-			list2.add(new Person(inputId, inputPw));
-			System.out.println(list2);
+//			list2.add(new Person(inputId, inputPw));
+
 			break;
 		} else {
+		
 			continue;
 		}
 		} while(true);
-		System.out.println(list2.get(3));
-			list.addAll(list2);
-		
-		
+		list2.addAll(0, list);
+		System.out.println(list2);		
 //		[kim/1234, park/5678, choi/9999]
 //		park/5678
 //		one:park/5678
@@ -108,4 +112,5 @@ public class Ex09_04_방연주 {
 		
 		
 	}
+	
 }
