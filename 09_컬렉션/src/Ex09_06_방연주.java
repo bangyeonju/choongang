@@ -95,7 +95,7 @@ public class Ex09_06_방연주 {
 				for (i = 0; i < list.size(); i++) {
 					System.out.println(list.get(i));
 				}
-				break;
+				continue;
 			case 5:
 				System.out.println("시스템 종료합니다.");
 				System.exit(0);
