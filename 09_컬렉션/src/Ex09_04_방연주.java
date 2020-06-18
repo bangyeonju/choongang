@@ -28,7 +28,7 @@ public class Ex09_04_规楷林 {
 		int i;
 		Person[] p = { new Person("park", "5678"),
 				new Person("kim", "1234"),
-				new Person("kim", "1234") };
+				new Person("choi", "9999") };
 		for (i = 0; i < p.length; i++) {
 			list.add(p[i]);
 		}
@@ -58,7 +58,6 @@ public class Ex09_04_规楷林 {
 		list2.add(new Person(inputId, inputPw));
 
 		if(answer.equalsIgnoreCase("n")) {
-//			list2.add(new Person(inputId, inputPw));
 
 			break;
 		} else {
