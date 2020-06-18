@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jdk.internal.org.jline.terminal.Size;
-import sun.security.action.GetBooleanAction;
-
 class Person {
 	private String id;
 	private String pw;
@@ -39,11 +36,7 @@ public class Ex09_04_规楷林 {
 		Person[] p = { 
 				new Person("park", "5678"),
 				new Person("kim", "1234"),
-<<<<<<< HEAD
-				new Person("choi", "9999") };
-=======
 				new Person("choi", "9876") };
->>>>>>> ea71fa07fcde10f6f3d4b0acf8370cee53cfa091
 		for (i = 0; i < p.length; i++) {
 			list.add(p[i]);
 		}
@@ -84,10 +77,9 @@ public class Ex09_04_规楷林 {
 		// list2.addAll(0, list);
 		// System.out.println(list2);
 		//
+		String answer = sc.next();
 
-<<<<<<< HEAD
 		if(answer.equalsIgnoreCase("n")) {
-=======
 		while (true) {
 			System.out.println(list.get(0).getId());
 			System.out.println("id");
@@ -97,7 +89,6 @@ public class Ex09_04_规楷林 {
 			String retry;
 			// Person per =new Person(id,pw);
 			// list.add(new Person(id, pw));
->>>>>>> ea71fa07fcde10f6f3d4b0acf8370cee53cfa091
 
 			list.add(new Person(id, pw));
 			System.out.print("拌加");
@@ -146,6 +137,6 @@ public class Ex09_04_规楷林 {
 		// PW:9988
 		// 拌加?n
 		// [kim/1234, park/5678, choi/9999, jung/1212, won/9988]
-	}
+	}}
 
 }
