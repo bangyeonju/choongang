@@ -37,7 +37,7 @@ public class Ex09_06_방연주 {
 		int select = sc.nextInt();
 		switch (select) {
 		case 1:
-			System.out.println("이름을 입력하세요");
+			System.out.println("이름을 입력하세요1");
 			name = sc.next();
 			System.out.println("전화번호를 입력하세요");
 			tel = sc.next();
@@ -47,16 +47,19 @@ public class Ex09_06_방연주 {
 			break;
 
 		case 2:
-			System.out.println("이름을 입력하세요");
+			System.out.println("이름을 입력하세요2");
 			name = sc.next();
 			for (i = 0; i < list.size(); i++) {
-				if (name.equals(list.get(i).getName())) {
+				if (list.contains(name)) {
 					list.remove(i);
-					
+				}else {
+					System.out.println("이름을 잘못입력하셨습니다.");
 				}
+				
 			}
+			break;
 		case 3:
-			System.out.println("이름을 입력하세요");
+			System.out.println("이름을 입력하세요3");
 			name = sc.next();
 			
 			for(i=0;i<list.size();i++) {
@@ -68,7 +71,10 @@ public class Ex09_06_방연주 {
 			}
 			}
 		case 4:
+			System.out.println(list);
 		case 5:
+			System.out.println("프로그램을 종료합니다.");
+			break;
 		}
 		}
 	}
