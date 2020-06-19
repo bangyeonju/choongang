@@ -5,6 +5,7 @@ public class test01 {
 		Scanner sc = new Scanner(System.in);
 
 		int su = sc.nextInt();
+
 		System.out.printf("%d\n", su);
 		System.out.println("==========================");
 		if (su < 10) {

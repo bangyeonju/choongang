@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import jdk.internal.org.jline.terminal.Size;
-import sun.security.action.GetBooleanAction;
-
 class Person {
 	private String id;
 	private String pw;
@@ -45,7 +42,8 @@ public class Ex09_04_规楷林 {
 		}
 
 		System.out.println(list.toString());
-		Person one = list.get(1);
+		Person one = list.get(2);
+		System.out.println("--");
 		System.out.println(one.toString());
 		Scanner sc = new Scanner(System.in);
 
@@ -80,7 +78,9 @@ public class Ex09_04_规楷林 {
 		// list2.addAll(0, list);
 		// System.out.println(list2);
 		//
+		String answer = sc.next();
 
+		if(answer.equalsIgnoreCase("n")) {
 		while (true) {
 			System.out.println(list.get(0).getId());
 			System.out.println("id");
@@ -138,6 +138,6 @@ public class Ex09_04_规楷林 {
 		// PW:9988
 		// 拌加?n
 		// [kim/1234, park/5678, choi/9999, jung/1212, won/9988]
-	}
+	}}
 
 }

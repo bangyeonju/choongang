@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Top<T> {//확정되지 않은 자료형자리 T
 	private T data; //확정되지 않은 자료형자리 T
 
@@ -33,6 +35,8 @@ public class Ex09_01_generic {
 	Top<Integer> t2 = new Top<Integer>();
 	t2.setData(10);
 	System.out.println(t2.getData());
+	
 	}
+
 
 }
