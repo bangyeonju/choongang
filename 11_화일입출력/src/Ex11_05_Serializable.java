@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Date;
-
+//ObjectOutputStream °´Ã¼
 class Person implements Serializable {
 	String name = "È«±æµ¿";
 	int age = 20;

@@ -11,15 +11,18 @@ public class Ex11_03_BufferedStream {
 		BufferedOutputStream bos;//임시저장소
 		BufferedInputStream bis;
 		try {
-			FileOutputStream fos = new FileOutputStream("data.txt"); // 내보내기만 할수있다! //1차스트림(목표지점에 직접연결되는스트림0)
+			//System에 있는 모든 file에 쓸수있는 기능제공
+			FileOutputStream fos = new FileOutputStream("data.txt"); // data.txt로 내보내기만 할수있다! //1차스트림(목표지점에 직접연결되는스트림0)
 			bos = new BufferedOutputStream(fos,5);//5번째 한꺼번에//2차스트림(원하는용도로가공!)
-			FileInputStream fis = new FileInputStream("data.txt");
+			//System에 있는 모든 file을 읽을수있는 기능
+			FileInputStream fis = new FileInputStream("data.txt");//console창에서
 			bis = new BufferedInputStream(fis,5);
 
 			for (int i = 1; i < 9; i++) {
 				System.out.print(i);
-				fos.write(48 + i);// 1:1(49) 2:2(50)
+				bos.write(48 + i);// 1:1(49) 2:2(50)
 			}
+			bos.flush();//버퍼에 있는 나머지 내보내라~~
 			int num;
 			// data.txt에 있는 123456789을 문자로 생각하기때문에 아스키코드 숫자로 보여주기때문에 char형으로 형변환?
 			System.out.println();

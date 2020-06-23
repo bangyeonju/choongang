@@ -2,11 +2,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+//text파일을 읽어 console 창에 뿌려준다
 public class Ex11_02_FileCopy {
 
 	public static void main(String[] args)   {
 		try {
+			
 			FileInputStream fis = new FileInputStream("from.txt"); //파일이 꼭있어야한다!!!!
 			FileOutputStream fos = new FileOutputStream("to.txt"); //자동으로 만들어진다.
 //			false,생략 : 없으면 하나생성됨, 있으면 화일안의 내용 다지워고 새로만들어짐!
