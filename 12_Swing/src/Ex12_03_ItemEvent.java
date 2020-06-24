@@ -54,7 +54,7 @@ class ItemEventEx extends Frame implements ItemListener {
 //		System.out.println("여기");
 		System.out.print(ch.getSelectedIndex()+":");
 		System.out.println(ch.getSelectedItem());
-		result.setText(ch.getSelectedItem());
+		result.setText(ch.getSelectedItem());//글자쓸때
 	}
 
 }

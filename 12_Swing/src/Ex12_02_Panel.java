@@ -5,6 +5,8 @@ import java.awt.Frame;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 class ExPanel extends Frame implements ActionListener {
 
@@ -49,10 +51,17 @@ class ExPanel extends Frame implements ActionListener {
 		p1.add(b1);
 		p2.add(b2);
 		p3.add(b3);
-//		p3.add(b4);
+		p3.add(b4);
+		this.addWindowListener(
+				new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						System.exit(0);
+					}
+				}
+				);
 
 		// BorderLayout¸¸ Àû¿ë
-		super.add(p1, "North");
+		super.add(p1, "North"); 
 		super.add(p2, "South");
 		super.add(p3, "Center");
 		super.add(b4);
