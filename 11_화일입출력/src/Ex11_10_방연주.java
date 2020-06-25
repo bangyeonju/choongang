@@ -46,7 +46,7 @@ public class Ex11_10_방연주 {
 				br2= new BufferedReader(new FileReader("c:\\sun\\voca.txt"));
 				while((line = br2.readLine()) != null) {
 					flag = false;
-					System.out.println(line); //line = apple/사과
+//					System.out.println(line); //line = apple/사과
 					String[] token =line.split("/");// /을 기준으로 쪼개라 // token[0]:apple token[1]:사과
 					if(token[0].equals(str)) {//토큰 0번방과 내가 입력한 단어와 같니?
 						System.out.println("단어>"+token[0]);
