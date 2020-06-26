@@ -1,0 +1,306 @@
+
+사용자명 입력: sys
+비밀번호 입력: oracle as sysdba
+
+
+
+SQL> show user;
+USER은 "SYS"입니다
+
+SQL> alter session set "_oracle_script"=true;
+세션이 변경되었습니다.
+
+SQL> create user jspid identified by jsppw account unlock;
+사용자가 생성되었습니다.
+
+SQL> drop user jspid cascade;
+
+사용자가 삭제되었습니다.
+
+SQL> grant connect, resource to jspid;
+
+권한이 부여되었습니다.
+
+
+SQL> grant create table, create sequence to jspid;
+
+권한이 부여되었습니다.
+
+SQL> conn
+사용자명 입력: jspid
+비밀번호 입력:
+연결되었습니다.
+
+SQL> show user;
+USER은 "JSPID"입니다...
+
+SQL> create table members(
+  2  id number primary key,--unique중복안됨, not null
+  3  name varchar2(30) not null,--반드시 입력
+  4  salary number(15,2) default 1000000,
+  5  birth date default sysdate,--sysdate:오늘날짜
+  6  email varchar2(30)
+  7  );
+
+테이블이 생성되었습니다.
+
+
+//테이블의 구조를 보고싶을때!
+SQL> desc members;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(30)
+ SALARY                                             NUMBER(15,2)
+ BIRTH                                              DATE
+ EMAIL                                              VARCHAR2(30)
+
+//데이터 삽입
+SQL> insert into members (id,name,salary,birth,email)
+  2  values(1,'제시카',100,to_date('90/12/25'),'aaa@naver.com');
+insert into members (id,name,salary,birth,email)
+            *
+1행에 오류:
+ORA-01950: 테이블스페이스 'USERS'에 대한 권한이 없습니다.
+-->권한부여 필요하다
+
+SQL> alter user jspid default tablespace users quota unlimited on users;
+alter user jspid default tablespace users quota unlimited on users
+*
+1행에 오류:
+ORA-01031: 권한이 불충분합니다
+-->권한부여는 관리자계정에서 해야한다.-->sys계정으로
+
+SQL> conn
+사용자명 입력: sys
+비밀번호 입력:
+연결되었습니다.
+SQL> show user;
+USER은 "SYS"입니다
+
+
+레코드를 할수있는 권한부여-->관리자계정에서만 가능하다
+SQL> alter user jspid default tablespace users quota unlimited on users;
+
+사용자가 변경되었습니다.
+
+SQL> conn
+사용자명 입력: jspid
+비밀번호 입력:
+연결되었습니다.
+
+SQL> show user;
+USER은 "JSPID"입니다
+
+삽입명령문!
+insert into 테이블명(칼럼1,칼럼2,..)
+values(값1,값2,..);
+
+SQL> insert into members (id,name,salary,birth,email)
+  2  values(1,'제시카',100,to_date('90/12/25'),'aaa@naver.com');
+
+1 개의 행이 만들어졌습니다.
+
+
+SQL> insert into members (id,name,salary,birth,email)
+  2     values(2,'수영',300,to_date('90/12/25'),'aaa@naver.com');
+
+1 개의 행이 만들어졌습니다.
+
+
+SQL> select * from members;
+
+        ID NAME
+---------- ------------------------------------------------------------
+    SALARY BIRTH    EMAIL
+---------- -------- ------------------------------------------------------------
+         1 제시카
+       100 90/12/25 aaa@naver.com
+
+         2 수영
+       300 90/12/25 aaa@naver.com
+
+
+
+
+
+SQL> col name for a10 --col(칼럼)의 폭을 10 줄인다. -->30글자까지 넣을수있는데 보여줄때 10자리수를 보여주겠다
+SQL> col email for a15--col의 폭을 15 줄인다
+
+
+SQL> select * from members;
+
+        ID NAME           SALARY BIRTH    EMAIL
+---------- ---------- ---------- -------- ---------------
+         1 제시카            100 90/12/25 aaa@naver.com
+         2 수영              300 90/12/25 aaa@naver.com
+
+
+
+
+SQL> col id for a3
+SQL> select * from members;
+
+        ID NAME           SALARY BIRTH    EMAIL
+---------- ---------- ---------- -------- ---------------
+########## 제시카            100 90/12/25 aaa@naver.com
+########## 수영              300 90/12/25 aaa@naver.com
+
+==>id는 숫자만 넣을수있는 칼럼
+
+
+숫자칼럼은 아래와같이 변경!!! 
+폭을 3자리로 바꾸면 => 999로
+SQL> col id for 999
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+
+
+
+
+SQL>  insert into members (id,name,salary,birth,email)
+  2  values(2,'티파니',700,to_date('85/12/25'),'bbb@naver.com');
+ insert into members (id,name,salary,birth,email)
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(JSPID.SYS_C007351)에 위배됩니다 =>Primary key에 중복된 데이터 넣으려고 할때 발생하는 에러메시지
+ ==>id는 중복 안됨!!!=> 수영이와 id값이 똑같다
+
+
+insert into members (id,name,salary,birth,email)
+ values(3,'티파니',700,to_date('85/12/25'),'bbb@naver.com');
+
+
+SQL> insert into members (id,name,salary,birth,email)
+  2   values(3,'티파니',700,to_date('85/12/25'),'bbb@naver.com');
+
+1 개의 행이 만들어졌습니다.
+
+SQL>
+SQL>
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+
+
+SQL> insert into members (id,salary,birth,email,name)
+  2   values(4,700,to_date('85/12/25'),'bbb@naver.com','티파니');
+
+1 개의 행이 만들어졌습니다.
+
+=>칼럼순서바껴도 잘 실행된다
+
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+   4 티파니            700 85/12/25 bbb@naver.com
+
+
+
+SQL> insert into members (id,salary,birth,email,name)
+  2  values(5,200,to_date('87/12/27'),'bbb@daum.com','서현');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into members (id,salary,birth,email,name)
+  2  values(6,600,to_date('86/1/3'),'abc@naver.com','제시카');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+   4 티파니            700 85/12/25 bbb@naver.com
+   5 서현              200 87/12/27 bbb@daum.com
+   6 제시카            600 86/01/03 abc@naver.com
+
+
+SQL> insert into members(salary,birth,id,name)
+  2  values(300,'92-07-20',7,'유리');
+
+1 개의 행이 만들어졌습니다.
+
+
+
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+   4 티파니            700 85/12/25 bbb@naver.com
+   5 서현              200 87/12/27 bbb@daum.com
+   6 제시카            600 86/01/03 abc@naver.com
+   7 유리              300 92/07/20
+
+
+
+SQL> insert into members(id,name)
+  2  values(8,'윤아');
+
+1 개의 행이 만들어졌습니다.
+
+
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+   4 티파니            700 85/12/25 bbb@naver.com
+   5 서현              200 87/12/27 bbb@daum.com
+   6 제시카            600 86/01/03 abc@naver.com
+   7 유리              300 92/07/20
+   8 윤아          1000000 20/06/26
+
+8 행이 선택되었습니다.
+
+=>salary는 안넣으면 default값 100000 으로 들어간다
+==>birth는 안넣으면 default값 오늘 날짜로 설정된다
+
+칼럼명을 안쓸경우 테이블을 만들때 순서대로 꼭 값을 전부 넣어야한다.
+insert into members values(9,'써니',500,to_date('99-04-12'),'ccc@daum.net');
+
+SQL> insert into members values(9,'써니',500,to_date('99-04-12'),'ccc@daum.net');
+
+1 개의 행이 만들어졌습니다.
+
+SQL>
+SQL> select * from members;
+
+  ID NAME           SALARY BIRTH    EMAIL
+---- ---------- ---------- -------- ---------------
+   9 써니              500 99/04/12 ccc@daum.net
+   1 제시카            100 90/12/25 aaa@naver.com
+   2 수영              300 90/12/25 aaa@naver.com
+   3 티파니            700 85/12/25 bbb@naver.com
+   4 티파니            700 85/12/25 bbb@naver.com
+   5 서현              200 87/12/27 bbb@daum.com
+   6 제시카            600 86/01/03 abc@naver.com
+   7 유리              300 92/07/20
+   8 윤아          1000000 20/06/26
+
+9 행이 선택되었습니다
+
+
+SQL> commit;
+
+커밋이 완료되었습니다.
