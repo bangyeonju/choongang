@@ -1,0 +1,117 @@
+
+사용자명 입력: sys
+비밀번호 입력: oracle as sysdba
+
+
+
+SQL> show user;
+USER은 "SYS"입니다
+
+SQL> alter session set "_oracle_script"=true;
+세션이 변경되었습니다.
+
+SQL> create user jspid identified by jsppw account unlock;
+사용자가 생성되었습니다.
+
+SQL> drop user jspid cascade;
+
+사용자가 삭제되었습니다.
+
+SQL> grant connect, resource to jspid;
+
+권한이 부여되었습니다.
+
+
+SQL> grant create table, create sequence to jspid;
+
+권한이 부여되었습니다.
+
+SQL> conn
+사용자명 입력: jspid
+비밀번호 입력:
+연결되었습니다.
+
+SQL> show user;
+USER은 "JSPID"입니다...
+
+SQL> create table members(
+  2  id number primary key,--unique중복안됨, not null
+  3  name varchar2(30) not null,--반드시 입력
+  4  salary number(15,2) default 1000000,
+  5  birth date default sysdate,--sysdate:오늘날짜
+  6  email varchar2(30)
+  7  );
+
+테이블이 생성되었습니다.
+
+
+//테이블의 구조를 보고싶을때!
+SQL> desc members;
+ 이름                                      널?      유형
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(30)
+ SALARY                                             NUMBER(15,2)
+ BIRTH                                              DATE
+ EMAIL                                              VARCHAR2(30)
+
+//데이터 삽입
+SQL> insert into members (id,name,salary,birth,email)
+  2  values(1,'제시카',100,to_date('90/12/25'),'aaa@naver.com');
+insert into members (id,name,salary,birth,email)
+            *
+1행에 오류:
+ORA-01950: 테이블스페이스 'USERS'에 대한 권한이 없습니다.
+-->권한부여 필요하다
+
+SQL> alter user jspid default tablespace users quota unlimited on users;
+alter user jspid default tablespace users quota unlimited on users
+*
+1행에 오류:
+ORA-01031: 권한이 불충분합니다
+-->권한부여는 관리자계정에서 해야한다.-->sys계정으로
+
+SQL> conn
+사용자명 입력: sys
+비밀번호 입력:
+연결되었습니다.
+SQL> show user;
+USER은 "SYS"입니다
+
+
+레코드를 할수있는 권한부여-->관리자계정에서만 가능하다
+SQL> alter user jspid default tablespace users quota unlimited on users;
+
+사용자가 변경되었습니다.
+
+SQL> conn
+사용자명 입력: jspid
+비밀번호 입력:
+연결되었습니다.
+
+SQL> show user;
+USER은 "JSPID"입니다
+
+SQL> insert into members (id,name,salary,birth,email)
+  2  values(1,'제시카',100,to_date('90/12/25'),'aaa@naver.com');
+
+1 개의 행이 만들어졌습니다.
+
+
+SQL> insert into members (id,name,salary,birth,email)
+  2     values(2,'수영',300,to_date('90/12/25'),'aaa@naver.com');
+
+1 개의 행이 만들어졌습니다.
+
+
+SQL> select * from members;
+
+        ID NAME
+---------- ------------------------------------------------------------
+    SALARY BIRTH    EMAIL
+---------- -------- ------------------------------------------------------------
+         1 제시카
+       100 90/12/25 aaa@naver.com
+
+         2 수영
+       300 90/12/25 aaa@naver.com
