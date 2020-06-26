@@ -37,7 +37,7 @@ USER은 "JSPID"입니다...
 SQL> create table members(
   2  id number primary key,--unique중복안됨, not null
   3  name varchar2(30) not null,--반드시 입력
-  4  salary number(15,2) default 1000000,
+  4  salary number(15,2) default 1000000,--(15,2)의미?15자리 숫자쓸수있다 소수점2자리까지
   5  birth date default sysdate,--sysdate:오늘날짜
   6  email varchar2(30)
   7  );

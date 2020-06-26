@@ -64,9 +64,9 @@ public class Ex11_11_WordCount방연주 {
 		System.out.println("s:"+s);
 		System.out.println(s.size());//중복빼고 키 개수
 		
-		Iterator<String> iter =s.iterator();
-		while(iter.hasNext()) {
-			String st = iter.next();
+		Iterator<String> iter =s.iterator(); //Iterator 반복을 하기위해
+		while(iter.hasNext()) {//hasNext key 값이 있냐? 있으면 가지고온다
+			String st = iter.next();//있으면 가지고온다
 			System.out.println(st+":"+hm.get(st));
 		}
 	}
