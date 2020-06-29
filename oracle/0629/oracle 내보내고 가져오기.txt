@@ -1,0 +1,20 @@
+SQL> drop directory dirpump;
+drop directory dirpump
+*
+1행에 오류:
+ORA-04043: DIRPUMP 객체는 존재하지 않습니다.
+
+2-2. 디렉토리 생성
+SQL> create directory dirpump as 'c:\labs_test\';
+디렉토리가 생성되었습니다.
+
+2-3.권한 부여
+SQL> grant read,write on directory dirpump to jspid;
+권한이 부여되었습니다.
+
+
+cmd창에서 
+
+내보내기 : expdp parfile = expdp_pump.txt
+
+가져오가 : impdp parfile = impdp_pump.txt

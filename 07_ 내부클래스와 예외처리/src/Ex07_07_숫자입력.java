@@ -10,7 +10,7 @@ public class Ex07_07_숫자입력 {
 		int input = 0;
 		;
 		int count = 0;
-		int answer = (int) (Math.random() * 100) + 1;
+		int answer = (int) (Math.random() * 11) + 10;
 		System.out.println("answer: " + answer);
 		do {
 			count++;
