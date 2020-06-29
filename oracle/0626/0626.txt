@@ -30,7 +30,7 @@ SQL> conn
 사용자명 입력: jspid
 비밀번호 입력:
 연결되었습니다.
-
+a
 SQL> show user;
 USER은 "JSPID"입니다...
 
