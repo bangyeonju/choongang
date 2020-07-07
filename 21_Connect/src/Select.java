@@ -10,6 +10,9 @@ public class Select {
 		PreparedStatement ps = null;
 		Connection conn = null;
 		try {
+			//jdbc
+			//0.jar파일포함
+			//1.드라이버로드 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			System.out.println("드라이버 로딩성공");
 			
@@ -19,8 +22,9 @@ public class Select {
 			conn = DriverManager.getConnection(url,user,pw);
 			System.out.println("접속성공");
 			
+			
 			//3. sql문 분석
-			String sql = "select * from simple";
+			String sql = "select * from simple order by num";
 			 ps = conn.prepareStatement(sql); //sql문자열분석해라
 			
 			//sql문 실행(select)
@@ -33,7 +37,7 @@ public class Select {
 				int num = rs.getInt("num");
 				String name = rs.getString("name");
 				String addr = rs.getString("addr");
-				System.out.println(num +":"+name+":"+addr );
+				System.out.println(num +":"+name+","+addr );
 			}
 			
 			//5.접속끊기
@@ -54,7 +58,7 @@ public class Select {
 				rs.close();
 				if(ps!=null) //분석이 잘됬다면 Null이 아님 => 반납?
 				ps.close();
-				if(conn != null)
+				if(conn != null) //접속이됬다면 ?
 				conn.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
