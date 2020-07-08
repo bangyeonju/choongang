@@ -28,16 +28,15 @@ public class PersonMain {
 			case 1:
 				ArrayList<PersonBean> lists = dao.getAllPerson();//리턴값을  lists에 담는다.
 				showPerson(lists);
-				
 				break;
-
 			case 2:
 				inputGender();
-			
 				break;
 			case 3:
+				updateData();
 				break;
 			case 4:
+				deleteData();
 				break;
 			case 5:
 				insertData();
@@ -106,6 +105,51 @@ public class PersonMain {
 		}
 		
 	 }
+	 void updateData() {
+		 System.out.println("수정할 번호 입력");
+		 int num =sc.nextInt();
+		 //번호를 조건으로 수정
+		 System.out.print("이름입력:");
+		 String name =sc.next();
+		 System.out.print("나이입력:");
+		 int age =sc.nextInt();
+		 System.out.print("성별입력:");
+		 String gender=sc.next();
+		 System.out.print("생년월일 입력:");
+		 String birth = sc.next();
+		 
+		 PersonBean bean = new PersonBean(); //정보를 한번에 넘기기위해 personbean 객체 생성
+		 
+		 bean.setNum(num);
+		 bean.setName(name);
+		 bean.setAge(age);
+		 bean.setGender(gender);
+		 bean.setBirth(birth);
+		 
+		int cnt = dao.updateData(bean);//다섯개의 정보가 한번에 묶여서 dao로 넘어간다
+		if(cnt==-1) 
+			System.out.println("수정 실패");
+		 else if (cnt==0)
+			System.out.println("조건에 맞는 데이터 없음");
+		else
+			System.out.println("수정 성공");
+
+		 
+	 }
+	 void deleteData(){
+		 System.out.print("삭제할 번호 입력: ");
+		 int num = sc.nextInt();
+		 int cnt = dao.deleteData(num);
+		 
+		 if(cnt==-1) 
+				System.out.println("삭제 실패");
+			 else if (cnt==0)
+				System.out.println("조건에 맞는 데이터 없음");
+			else
+				System.out.println("삭제 성공");
+		 
+	 }
+	 
 	public static void main(String[] args) {
 
 		new PersonMain();//객체만들면서 생성자호출
