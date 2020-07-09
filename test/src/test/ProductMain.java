@@ -27,11 +27,10 @@ public class ProductMain {
 			case 1:
 				ArrayList<ProductBean> lists = dao.getAllProduct();
 				showProducts(lists);
-				
 				break;
 
 			case 2:
-				
+				inputId();
 				break;
 
 			case 3:
@@ -57,6 +56,16 @@ public class ProductMain {
 		}
 			
 		}
+	public void inputId() {
+		System.out.print("찾는아이디 : ");
+		int id = sc.nextInt();
+		ProductBean bean = Produc
+		dao.getProductbyId(id);
+		
+		
+		
+		
+	}
 	public void showProducts(ArrayList<ProductBean> lists) {
 		String title = "아이디\t이름\t재고량\t단가\t카테고리\t입고일자\t";
 		System.out.println(title);
@@ -70,7 +79,7 @@ public class ProductMain {
 		
 	}
 	public static void main(String[] args) {
-		new PersonMain();
+		new ProductMain();
 		
 	}
 

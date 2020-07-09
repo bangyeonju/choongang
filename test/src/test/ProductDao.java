@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class ProductDao {
 
-	String driver = "orcle.jdbc.driver.OracleDriver";
+	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String user = "jspid";
 	String pw = "jsppw";
-	
+
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -81,4 +81,36 @@ public class ProductDao {
 
 		return lists;
 
-	}}
+	}
+
+	public void getProductbyId(int id) {
+		getConnection();
+		String sql = "select * from products where id = ?";
+		try {
+			ps = conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			if(rs.next()) {
+				int id2 = rs.getInt("id");
+				String name = rs.getString("name");
+				int stock = rs.getInt("stock");
+				int price = rs.getInt("price");
+				String category = rs.getString("category");
+				String inputdate = String.valueOf(rs.getDate("inputdate"));
+				ProductBean bean = new ProductBean();
+				
+				
+				bean.setId(id);
+				bean.setName(name);
+				bean.setStock(stock);
+				bean.setPrice(price);
+				bean.setCategory(category);
+				bean.setInputdate(inputdate);
+				
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+}

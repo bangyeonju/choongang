@@ -11,7 +11,7 @@ public class ProductBean {
 	public ProductBean() {
 		
 	}
-	public ProductBean(int id, String name, int stock, int price, String category, String inputdate) {
+	public ProductBean(int id, String name, int stock, int price, String category, String inputdate) { //생성자 만들기
 		super();
 		this.id = id;
 		this.name = name;
