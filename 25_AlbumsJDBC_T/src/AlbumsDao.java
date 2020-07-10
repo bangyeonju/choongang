@@ -39,7 +39,7 @@ public class AlbumsDao {
 
 		try {
 			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery(sql);
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				AlbumsBean bean = new AlbumsBean();
 				int num = rs.getInt("num");
@@ -47,7 +47,7 @@ public class AlbumsDao {
 				String singer = rs.getString("singer");
 				String company = rs.getString("company");
 				int price = rs.getInt("price");
-				String pub_day = String.valueOf(rs.getString("pub_day"));
+				String pub_day = String.valueOf(rs.getDate("pub_day"));
 
 				bean.setNum(num);
 				bean.setSong(song);
@@ -76,11 +76,13 @@ public class AlbumsDao {
 	}
 
 	public int insertAlbums(AlbumsBean bean) {
+		
 		getConnection();
 		int cnt = -1;
 		String sql = "insert into albums values(albumseq.nextval,?,?,?,?,?)";
 
 		try {
+			System.out.println(bean.getSong());
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, bean.getSong());
 			ps.setString(2, bean.getSinger());
@@ -162,10 +164,10 @@ public class AlbumsDao {
 	public ArrayList<AlbumsBean> searchAlbums(String column, String inputWord) {
 		getConnection();
 		ArrayList<AlbumsBean> lists = new ArrayList<AlbumsBean>();
-		String sql = "select * from albums where "+column+ " like ? order by num";
+		String sql = "select * from albums where lower("+column+ ") like ? order by num";
 		try {
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, "%"+inputWord+"%");
+			ps.setString(1, "%"+inputWord.toLowerCase()+"%");
 			rs=ps.executeQuery();
 			
 			while(rs.next()) {
@@ -176,7 +178,7 @@ public class AlbumsDao {
 				String singer = rs.getString("singer");
 				String company = rs.getString("company");
 				int price =rs.getInt("price");
-				String pub_day = rs.getString("pub_day");
+				String  pub_day = String.valueOf(rs.getDate("pub_day"));
 				bean.setNum(num);
 				bean.setSong(song);
 				bean.setSinger(singer);
@@ -210,11 +212,14 @@ public class AlbumsDao {
 	public ArrayList<AlbumsBean> selectRank(int sn, int ln) {
 		getConnection();
 		ArrayList<AlbumsBean> lists = new ArrayList<AlbumsBean>();
-		String sql = "select num,song,singer,company,price,pub_day\r\n" + 
-				"from(select num,song,singer,company,price,pub_day,rownum as rank \r\n" + 
-				"from albums \r\n" + 
-				"order by price desc ,singer asc)\r\n" + 
-				"where rank between ? and ?";
+//		String sql = "select num,song,singer,company,price,pub_day\r\n" + 
+//				"from(select num,song,singer,company,price,pub_day,rownum as rank \r\n" + 
+//				"from albums \r\n" + 
+//				"order by price desc ,singer asc)\r\n" + 
+//				"where rank between ? and ?";
+		String sql = "select rownum,num,song,singer,company,price ,pub_day, rank "
+				+ "from (select rownum,num,song,singer,company,price, pub_day, rank() over (order by price desc,singer asc) as rank  "+ 
+				" from albums) " + " where rank between ? and ?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, sn);
@@ -228,7 +233,7 @@ public class AlbumsDao {
 				String singer = rs.getString("singer");
 				String company = rs.getString("company");
 				int price =rs.getInt("price");
-				String pub_day = rs.getString("pub_day");
+				String pub_day = String.valueOf(rs.getDate("pub_day"));
 				bean.setNum(num);
 				bean.setSong(song);
 				bean.setSinger(singer);
@@ -257,10 +262,10 @@ public class AlbumsDao {
 		return lists;
 	}
 
-	public ArrayList<AlbumsBean> selectUp() {
+	public ArrayList<AlbumsBean> selectAlign(String column,String way) {
 		getConnection();
 		ArrayList<AlbumsBean> lists = new ArrayList<AlbumsBean>();
-		String sql = "select * from albums order by song desc";
+		String sql = "select * from albums order by "+ column +  " " + way;
 		try {
 			ps=conn.prepareStatement(sql);
 			rs= ps.executeQuery();
@@ -271,7 +276,7 @@ public class AlbumsDao {
 				String singer = rs.getString("singer");
 				String company = rs.getString("company");
 				int price = rs.getInt("price");
-				String pub_day = String.valueOf(rs.getString("pub_day"));
+				String pub_day = String.valueOf(rs.getDate("pub_day"));
 				
 				bean.setNum(num);
 				bean.setSong(song);
@@ -297,45 +302,6 @@ public class AlbumsDao {
 		}
 		return lists;
 	}
-
-	public ArrayList<AlbumsBean> selectDown() {
-		getConnection();
-		ArrayList<AlbumsBean> lists = new ArrayList<AlbumsBean>();
-		String sql = "select * from albums order by song asc";
-		try {
-			ps=conn.prepareStatement(sql);
-			rs= ps.executeQuery();
-			while (rs.next()) {
-				AlbumsBean bean = new AlbumsBean();
-				int num = rs.getInt("num");
-				String song = rs.getString("song");
-				String singer = rs.getString("singer");
-				String company = rs.getString("company");
-				int price = rs.getInt("price");
-				String pub_day = String.valueOf(rs.getString("pub_day"));
-				
-				bean.setNum(num);
-				bean.setSong(song);
-				bean.setSinger(singer);
-				bean.setCompany(company);
-				bean.setPrice(price);
-				bean.setPub_day(pub_day);
-				lists.add(bean);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (conn != null)
-					conn.close();
-				if (ps != null)
-					ps.close();
-				if (rs != null)
-					rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return lists;
-	}
+	
+	
 }

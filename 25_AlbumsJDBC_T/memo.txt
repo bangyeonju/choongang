@@ -4,8 +4,10 @@ create sequence albumseq
 	increment by 1
 	start with 1 
 	minvalue 1
-	maxvalue 100;
-
+	maxvalue 100
+	nocache;
+	
+--nocache ? 컴푸터를 껏다가 키면 시퀀스가 커지는걸 방지!
 
 drop table albums;
 create table albums(

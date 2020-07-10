@@ -1,4 +1,3 @@
-
 public class AlbumsBean {
 	private int num;
 	private String song;

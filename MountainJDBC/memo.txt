@@ -1,0 +1,59 @@
+drop sequence mountainseq;
+
+drop table mountain;
+
+create sequence mountainseq
+increment by 1
+start with 1
+minvalue 1
+nocache;
+
+create table mountain(
+no number primary key, 
+name varchar2(20) not null,
+place varchar2(20),
+top varchar2(20),
+who varchar2(50) default '혼자'
+);
+
+drop table m_info;
+create table m_Info(
+name varchar2(20) primary key,
+phone varchar2(30) not null
+);
+
+insert into mountain(no,name,place,top,who)
+values(mountainseq.nextval,'관악산','서울','연주대','해린,지선');
+
+insert into mountain(no,name,place,top,who)
+values(mountainseq.nextval,'북한산','경기','백운대','혜원');
+insert into mountain(no,name,place,top,who)
+values(mountainseq.nextval,'청계산','경기','매봉','혜원');
+insert into mountain(no,name,place,top,who)
+values(mountainseq.nextval,'도봉산','경기','자운봉','혜원');
+insert into mountain(no,name,place,top,who)
+values(mountainseq.nextval,'한라산','제주','백록담','혜원');
+insert into mountain(no,name,place,top)
+values(mountainseq.nextval,'한라산','제주','백록담');
+
+commit;
+
+insert into m_info(name, phone)
+values('관악산','02-1234-5678');
+
+insert into m_info(name, phone)
+values('북한산','02-1111-1111');
+insert into m_info(name, phone)
+values('도봉산','02-2222-2222');
+insert into m_info(name, phone)
+values('청계산','02-3333-3333');
+insert into m_info(name, phone)
+values('한라산','123-0000-0000');
+
+select m.name,place ,top, phone from mountain m inner join m_info i on m.name = i.name;
+
+
+
+select count(*) from mountain 
+group by who
+having who like '%혜원%';
